@@ -17,13 +17,17 @@ class MilkTea {
 }
 
 /**
- * Factory
+ * Simple Factory Object
  * @type {Object}
  */
 const Serenitea = {
 	orderMilkTea: (flavor, sinkers) => new MilkTea(flavor, sinkers)
 }
 
+/**
+ * Usage
+ * @type {[type]}
+ */
 const milkTea = Serenitea.orderMilkTea("okinawa", "pearls")
 
 console.log("Flavor: ", milkTea.getFlavor())
