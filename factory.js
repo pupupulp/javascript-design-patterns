@@ -32,7 +32,7 @@ class ChickenMeatSupplier extends Supplier {
 	}
 }
 
-class PortMeatSupplier extends Supplier {
+class PorkMeatSupplier extends Supplier {
 	makeSupplier() {
 		return new Monterey()
 	}
