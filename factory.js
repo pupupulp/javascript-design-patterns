@@ -45,5 +45,9 @@ class PortMeatSupplier extends Supplier {
 const chickenMeatSupplier = new ChickenMeatSupplier()
 chickenMeatSupplier.takeOrders()
 
+/**
+ * Usage
+ * @type {PorkMeatSupplier}
+ */
 const porkMeatSupplier = new PorkMeatSupplier()
 porkMeatSupplier.takeOrders()
