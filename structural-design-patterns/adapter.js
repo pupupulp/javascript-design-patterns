@@ -25,7 +25,7 @@ VGAMonitor.prototype.displayThroughVGA = function(message = "Connected to VGA"){
 /**
  * Adapter Class
  */
-function VGAMonitorAdapter() { this.constructor(vgaMonitor) }
+function VGAMonitorAdapter(vgaMonitor) { this.constructor(vgaMonitor) }
 VGAMonitorAdapter.prototype = {
 	constructor: function(vgaMonitor) {
 		this.vgaMonitor = vgaMonitor
