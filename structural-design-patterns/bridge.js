@@ -5,7 +5,7 @@ var myClass = require('../implements.js')
  */
 function IDish() {}
 IDish.prototype = {
-	constructor: function() {},
+	constructor: function(flavor) {},
 	serve : function() {}
 }
 
