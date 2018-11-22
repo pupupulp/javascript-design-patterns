@@ -1,37 +1,62 @@
+var myClass = require('../implements.js')
+
+/**
+ * Interface Class for Dish
+ */
+function IDish() {}
+IDish.prototype = {
+	constructor: function() {},
+	serve : function() {}
+}
+
 /**
  * Dish Classes
  */
-class ChickenInasal {
-	constructor(flavor) {
+function ChickenInasal(flavor) { 
+	myClass.Implements(this, new IDish()) 
+	this.constructor(flavor)
+}
+ChickenInasal.prototype = {
+	constructor: function(flavor) {
 		this.flavor = flavor
-	}
-
-	serve() {
+	},
+	serve: function() {
 		return "Chicken Inasal in " + this.flavor.getFlavor() + " flavor"
 	}
 }
 
-class Sisig {
-	constructor(flavor) {
+function Sisig(flavor) { 
+	myClass.Implements(this, new IDish()) 
+	this.constructor(flavor)
+}
+Sisig.prototype = {
+	constructor: function(flavor) {
 		this.flavor = flavor
-	}
-
-	serve() {
+	},
+	serve: function() {
 		return "Sisig in " + this.flavor.getFlavor() + " flavor"
 	}
 }
 
 /**
+ * Interface Class for Flavor
+ */
+function IFlavor() {}
+IFlavor.prototype.getFlavor = function() {}
+
+/**
  * Flavor Classes
  */
-class OriginalFlavor {
-	getFlavor() {
+function OriginalFlavor() { myClass.Implements(this, new IFlavor()) }
+OriginalFlavor.prototype = {
+	getFlavor: function() {
 		return "original"
 	}
 }
 
-class SpicyFlavor {
-	getFlavor() {
+function SpicyFlavor() { myClass.Implements(this, new IFlavor()) }
+SpicyFlavor.prototype = {
+	getFlavor: function() {
 		return "spicy"
 	}
 }
@@ -39,11 +64,15 @@ class SpicyFlavor {
 /**
  * Usage
  */
-const originalFlavor = new OriginalFlavor()
-const spicyFlavor = new SpicyFlavor()
+try {
+	const originalFlavor = new OriginalFlavor()
+	const spicyFlavor = new SpicyFlavor()
 
-const chickenInasal = new ChickenInasal(originalFlavor)
-const sisig = new Sisig(spicyFlavor)
+	const chickenInasal = new ChickenInasal(originalFlavor)
+	const sisig = new Sisig(spicyFlavor)
 
-console.log(chickenInasal.serve())
-console.log(sisig.serve())
+	console.log(chickenInasal.serve())
+	console.log(sisig.serve())
+} catch(e) {
+	console.log(e)
+}
