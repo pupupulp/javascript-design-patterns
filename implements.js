@@ -22,16 +22,6 @@ function Implements(implementer, pseudoInterface) {
  * @return {[type]}                 [description]
  */
 Implements.functionNotImplemented = function(implementing, implemented, pseudoInterface) {
-	this.implementing = implementing;
-	this.implemented = implemented;
-	this.pseudoInterface = pseudoInterface;
-}
-
-/**
- * [message description]
- * @return {[type]} [description]
- */
-Implements.functionNotImplemented.prototype.message = function() {
 	return this.implementing + " does not implement function: " + this.implemented;
 }
 
