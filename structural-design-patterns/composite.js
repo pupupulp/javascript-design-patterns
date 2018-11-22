@@ -6,7 +6,7 @@ var myClass = require('../implements.js')
 function IDoctor() {}
 IDoctor.prototype = {
 	constructor: function(name, rate) {},
-	getFlavor: function() {},
+	getName: function() {},
 	setRate: function(rate) {},
 	getRate: function() {},
 	getSpecialty: function() {}
@@ -30,8 +30,8 @@ Anesthesiologists.prototype = {
 		this.name = name
 		this.rate = rate
 	},
-	getFlavor: function() {
-		return this.flavor
+	getName: function() {
+		return this.name
 	},
 	setRate: function(rate) {
 		this.rate = rate
@@ -62,8 +62,8 @@ Cardiologists.prototype = {
 		this.name = name
 		this.rate = rate
 	},
-	getFlavor: function() {
-		return this.flavor
+	getName: function() {
+		return this.name
 	},
 	setRate: function(rate) {
 		this.rate = rate
@@ -106,7 +106,14 @@ Hospital.prototype = {
  */
 try {
 	const anesthesiologists = new Anesthesiologists("John Doe", 50000)
+	console.log(anesthesiologists.getName())
+	console.log(anesthesiologists.getRate())
+	console.log(anesthesiologists.getSpecialty())
+
 	const cardiologists = new Cardiologists("Jane Doe", 150000)
+	console.log(cardiologists.getName())
+	console.log(cardiologists.getRate())
+	console.log(cardiologists.getSpecialty())
 
 	const hospital = new Hospital()
 	hospital.addDoctor(anesthesiologists)
