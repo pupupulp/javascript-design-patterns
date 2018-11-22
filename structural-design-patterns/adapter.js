@@ -12,16 +12,12 @@ IVGAMonitor.prototype.displayThroughVGA = function(){}
 /**
  * Model Classes
  */
-function HDMIMonitor() {
-	myClass.Implements(this, [new IHDMIMonitor()])
-}
+function HDMIMonitor() { myClass.Implements(this, new IHDMIMonitor()) }
 HDMIMonitor.prototype.displayThroughHDMI = function(message = "Connected to HDMI"){ 
 	console.log(message) 
 }
 
-function VGAMonitor() {
-	myClass.Implements(this, [new IVGAMonitor()])
-}
+function VGAMonitor() { myClass.Implements(this, new IVGAMonitor()) }
 VGAMonitor.prototype.displayThroughVGA = function(message = "Connected to VGA"){ 
 	console.log(message) 
 }
@@ -29,12 +25,12 @@ VGAMonitor.prototype.displayThroughVGA = function(message = "Connected to VGA"){
 /**
  * Adapter Class
  */
-class VGAMonitorAdapter {
-	constructor(vgaMonitor) {
+function VGAMonitorAdapter() { this.constructor(vgaMonitor) }
+VGAMonitorAdapter.prototype = {
+	constructor: function(vgaMonitor) {
 		this.vgaMonitor = vgaMonitor
-	}
-
-	displayThroughHDMI() {
+	},
+	displayThroughHDMI: function() {
 		this.vgaMonitor.displayThroughVGA("Connected to VGA via Adapter")
 	}
 }
@@ -42,10 +38,9 @@ class VGAMonitorAdapter {
 /**
  * Main Class Declaration
  */
-class Laptop {
-	connect(hdmiMonitor) {
-		hdmiMonitor.displayThroughHDMI()
-	}
+function Laptop() {}
+Laptop.prototype.connect = function(hdmiMonitor) {
+	hdmiMonitor.displayThroughHDMI()
 }
 
 /**
