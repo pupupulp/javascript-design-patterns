@@ -1,12 +1,29 @@
+var myClass = require('../implements.js')
+
 /**
- * Interface Classes
+ * Interface Class
  */
-class HDMIMonitor {
-	displayThoughHDMI() {}
+function IHDMIMonitor() {}
+IHDMIMonitor.prototype.displayThroughHDMI = function(){}
+
+function IVGAMonitor() {}
+IVGAMonitor.prototype.displayThroughVGA = function(){}
+
+/**
+ * Model Classes
+ */
+function HDMIMonitor() {
+	myClass.Implements(this, [new IHDMIMonitor()])
+}
+HDMIMonitor.prototype.displayThroughHDMI = function(message = "Connected to HDMI"){ 
+	console.log(message) 
 }
 
-class VGAMonitor {
-	displayThoughVGA() {}
+function VGAMonitor() {
+	myClass.Implements(this, [new IVGAMonitor()])
+}
+VGAMonitor.prototype.displayThroughVGA = function(message = "Connected to VGA"){ 
+	console.log(message) 
 }
 
 /**
@@ -17,8 +34,8 @@ class VGAMonitorAdapter {
 		this.vgaMonitor = vgaMonitor
 	}
 
-	displayThoughHDMI() {
-		this.vgaMonitor.displayThoughVGA()
+	displayThroughHDMI() {
+		this.vgaMonitor.displayThroughVGA("Connected to VGA via Adapter")
 	}
 }
 
@@ -27,15 +44,18 @@ class VGAMonitorAdapter {
  */
 class Laptop {
 	connect(hdmiMonitor) {
-		hdmiMonitor.displayThoughHDMI()
+		hdmiMonitor.displayThroughHDMI()
 	}
 }
 
 /**
  * Usage
  */
+hdmiMonitor = new HDMIMonitor()
+
 vgaMonitor = new VGAMonitor()
 vgaMonitorAdapter = new VGAMonitorAdapter(vgaMonitor)
 
 laptop = new Laptop()
+laptop.connect(hdmiMonitor)
 laptop.connect(vgaMonitorAdapter)
